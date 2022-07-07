@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meets_on_flutter/BottomTabPage.dart';
 import 'package:meets_on_flutter/hexColor.dart';
 
 void main() {
@@ -17,37 +18,9 @@ class MyApp extends StatelessWidget {
         // HexColor('00ced1')
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Meets'),
+      // home: const MyHomePage(title: 'Meets'),
+      home: BottomTabPage()
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'This is first message',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
