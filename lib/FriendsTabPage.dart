@@ -22,40 +22,39 @@ class FriendsTabPage extends StatelessWidget {
     return MaterialApp(
       // debugリボンを削除する
       debugShowCheckedModeBanner: false,
-      // backgroundColor: Colors.orange,
-      // title: 'Flutter',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
-        body: Column(children: <Widget>[
-          Container(
-            height: 300,
-            // EdgeInsets.all(4)：枠の上下左右全ての方向に同じ余白を作
-            // padding: EdgeInsets.all(0),
-            // 配列を元にリスト表示
-            child: ListView.builder(
-              itemCount: listItems.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  // margin: EdgeInsets.only(left:width*0.05),
-                  height: 100,
-                  // color: listItems[index]['color'],
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/image_test.png'),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  child: Text(listItems[index]['text']),
-                );
-              },
-            ),
+        body: Center(
+          child: ListView.builder(
+            reverse: true, // リストを下から生成する
+            itemCount: listItems.length,
+            itemBuilder: (context, index) {
+              var data = listItems[index];
+              return Container(
+                child: ListTile(
+                  title: Text(data['text']),
+                ),
+              );
+              // return Container(
+              //   // margin: EdgeInsets.only(left:width*0.05),
+              //   height: 100,
+              //   // color: listItems[index]['color'],
+              //   decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //         image: AssetImage('images/image_test.png'),
+              //         fit: BoxFit.fill,
+              //       ),
+              //       shape: BoxShape.circle
+              //   ),
+              //   child: Text(listItems[index]['text']),
+              // );
+            },
           ),
-        ]),
+        ),
       ),
     );
   }
 }
-
 // ↓memo↓
 // child: Text("Friends",style: TextStyle(fontSize: 20),),
 //
