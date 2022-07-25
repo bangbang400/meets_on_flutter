@@ -28,7 +28,7 @@ class FriendsTabPage extends StatelessWidget {
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                 return ListTile(
-                  title: Text(data['user_name']),
+                  title: Text(data['user_Name']),
                   // subtitle: Text(data['user_name']),
                 );
               }).toList(),
