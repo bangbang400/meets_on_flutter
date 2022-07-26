@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         ),);
                       } catch (e) {
-                        // ログインに失敗した場合
+                        // ログインに失敗した場合 ..
                         setState(() {
                           infoText = "ログインに失敗しました:${e.toString()}";
                           print("ログインに失敗しました:${e.toString()}");
