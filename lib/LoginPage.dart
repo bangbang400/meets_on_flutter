@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                         // ログイン成功した場合、友達画面に遷移＋ログイン画面を破棄
                         await Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) {
-                            return FriendsTabPage();
+                            return BottomTabPage();
                         }
                         ),);
                       } catch (e) {

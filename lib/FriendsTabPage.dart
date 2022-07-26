@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,6 +8,11 @@ class FriendsTabPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // 非同期処理を実行する
+    var future = getDocId();
+    future.then((value) => print("get ${value}"));
+
     return Scaffold(
       // appBar: AppBar(
       //   title: Text('title'),
@@ -19,7 +25,6 @@ class FriendsTabPage extends StatelessWidget {
             if (snapshot.hasError) {
               return Text('Something went wrong');
             }
-
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Text("Loading");
             }
@@ -39,6 +44,25 @@ class FriendsTabPage extends StatelessWidget {
     );
   }
 }
+
+Future<List> getDocId() async {
+  // 現在のユーザ情報を取得する
+  var user = FirebaseAuth.instance.currentUser;
+  List docList = [];
+
+  //現在ログインしているユーザを取得して友達リストを表示する
+  await FirebaseFirestore.instance.collection('Users').doc(user!.uid).collection('Friends').get().then(
+        (QuerySnapshot querySnapshot) => {
+      querySnapshot.docs.forEach(
+            (doc) {
+          docList.add(doc.id);
+        },
+      ),
+    },
+  );
+  return docList;
+}
+
 
 // ↓memo↓
 // child: Text("Friends",style: TextStyle(fontSize: 20),),
