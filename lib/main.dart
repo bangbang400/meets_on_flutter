@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meets_on_flutter/BottomTabPage.dart';
+import 'package:meets_on_flutter/LoginPage.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meets',
-      home: BottomTabPage(),
+      home: LoginPage(),
     );
   }
 }
