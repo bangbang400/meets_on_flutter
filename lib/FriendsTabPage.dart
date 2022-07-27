@@ -45,22 +45,16 @@ class FriendsTabPage extends StatelessWidget {
   }
 }
 
-Future<List> getDocId() async {
+// Future (単体の非同期データを扱う場合）
+// Stream (複数の非同期データを扱う場合）
+Future<DocumentReference<Map<String, dynamic>>?> getDocId() async {
   // 現在のユーザ情報を取得する
-  var user = FirebaseAuth.instance.currentUser;
-  List docList = [];
-
-  //現在ログインしているユーザを取得して友達リストを表示する
-  await FirebaseFirestore.instance.collection('Users').doc(user!.uid).collection('Friends').get().then(
-        (QuerySnapshot querySnapshot) => {
-      querySnapshot.docs.forEach(
-            (doc) {
-          docList.add(doc.id);
-        },
-      ),
-    },
-  );
-  return docList;
+  String uid = FirebaseAuth.instance.currentUser!.uid;
+  // print(FirebaseFirestore.instance.collection('Users').doc(uid).collection('Friends').doc().id);
+  List<DocumentSnapshot> docList = [];
+  final snapshot = await FirebaseFirestore.instance.collection('Users').doc(uid).collection('Friends');
+  //友達リストを表示する
+  return snapshot.parent;
 }
 
 
