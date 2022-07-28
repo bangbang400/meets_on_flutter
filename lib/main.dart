@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meets_on_flutter/BottomTabPage.dart';
+import 'package:meets_on_flutter/FriendsTabPage.dart';
 import 'package:meets_on_flutter/LoginPage.dart';
+import 'SplashPage.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -18,7 +20,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meets',
-      home: LoginPage(),
+      // home: SplashPage(),
+      home: BottomTabPage(),
+      // routes: <String, WidgetBuilder>{
+      //   '/login': (BuildContext context) => LoginPage(),
+      //   '/friends': (BuildContext context) => FriendsTabPage(),
+      // },
     );
   }
 }
