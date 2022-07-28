@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meets_on_flutter/ChatTabPage.dart';
 import 'package:meets_on_flutter/FriendsTabPage.dart';
+import 'package:meets_on_flutter/SettingTabPage.dart';
 
 class BottomTabPage extends StatefulWidget {
   @override
@@ -13,7 +14,8 @@ class _BottomTabPage extends State<BottomTabPage> {
   int _currentIndex = 0;
   final _pageWidgets = [
     FriendsTabPage(),
-    ChatTabPage()
+    ChatTabPage(),
+    SettingTabPage(),
   ];
 
   @override
@@ -27,7 +29,8 @@ class _BottomTabPage extends State<BottomTabPage> {
         items: <BottomNavigationBarItem>[
           // textではなくて、labelにしないとダメらしい
           BottomNavigationBarItem(icon: Icon(Icons.group),label: '友達',),
-          BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: 'チャット')
+          BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: 'チャット'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: '設定')
         ],
         currentIndex: _currentIndex,
         fixedColor: Colors.blueAccent,
