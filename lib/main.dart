@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meets',
-      // home: SplashPage(),
-      home: BottomTabPage(),
+      home: SplashPage(),
+      // home: BottomTabPage(),
       // routes: <String, WidgetBuilder>{
       //   '/login': (BuildContext context) => LoginPage(),
       //   '/friends': (BuildContext context) => FriendsTabPage(),

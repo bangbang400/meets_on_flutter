@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'AccountSettingPage.dart';
 
 class SettingTabPage extends StatelessWidget {
   @override
@@ -16,12 +16,12 @@ class SettingTabPage extends StatelessWidget {
 
   // 区切り線ありのリスト
   Widget SeparatedList() {
-    final setting_list = ["アカウント設定","aaa"];
+    final setting_list = ["アカウント設定"];// 設定リスト
     return ListView.separated(
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           // １件のアイテムについて
-          return settingItem(setting_list[index]);
+          return settingItem(context,setting_list, index);
         },
         separatorBuilder: (context, index) {
           // リストのセパレータについて
@@ -34,25 +34,43 @@ class SettingTabPage extends StatelessWidget {
   //　区切りのスタイル
   Widget separatorItem() {
     return Container(
-      height: 20,
-      color: Colors.orange,
+      // height: 20,
+      // color: Colors.orange,
     );
   }
 
   //
-  Widget settingItem(String title) {
+  Widget settingItem(context, list, index) {
     return Container(
       decoration: new BoxDecoration(
-        border: new Border(bottom: BorderSide(width:  3.0, color: Colors.green))
+        border: new Border(
+            bottom: BorderSide(
+                width:  1.0,
+                color: Colors.grey,
+            ),
+        ),
       ),
       child: ListTile(
         title: Text(
-          title,
+          list[index],
           style: TextStyle(
               fontSize: 18.0,
               // fontWeight: FontWeight.bold
           ),
         ),
+        onTap: () {
+          switch (index) {
+            case 0:
+              // アカウント設定
+              print("アカウント設定がタップされました");
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AccountSettingPage()));
+              break;
+            default:
+              print("switchの引数にない値");
+              break;
+          }
+
+        },
       ),
     );
   }
