@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meets_on_flutter/AccountSettingPage.dart';
 import 'package:meets_on_flutter/ChatTabPage.dart';
 import 'package:meets_on_flutter/FriendsTabPage.dart';
 import 'package:meets_on_flutter/SettingTabPage.dart';
@@ -16,6 +17,7 @@ class _BottomTabPage extends State<BottomTabPage> {
     FriendsTabPage(),
     ChatTabPage(),
     SettingTabPage(),
+    AccountSettingPage(),
   ];
 
   @override
